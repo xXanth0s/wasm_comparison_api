@@ -8,7 +8,7 @@ import { VideoService } from '../services/video.service';
 import * as stream from 'stream';
 
 @controller('/video')
-export class videoController {
+export class VideoController {
 
     constructor(@inject(TYPES.VideoService) private readonly videoService: VideoService) {
     }

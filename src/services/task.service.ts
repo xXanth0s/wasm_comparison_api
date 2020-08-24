@@ -29,12 +29,17 @@ export class TaskService {
         return this.mongoClient.insert<Task>(this.collectionName, finalTask);
     }
 
+    public deleteTask(taskId: Task['_id']): Promise<void> {
+        return this.mongoClient.delte(this.collectionName, taskId);
+    }
+
     public async updateTask(taskId: Task['_id'], task: TaskToSave): Promise<void> {
         const finalTask: Partial<Task> = {
             ...task,
             dateUpdated: new Date()
         }
-        this.mongoClient.update(this.collectionName, taskId, finalTask);
+        delete finalTask._id;
+        const result = await this.mongoClient.update(this.collectionName, taskId, finalTask);
     }
 
     private getTask(taskId: Task['_id']): Promise<Task> {

@@ -1,32 +1,62 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js run dev
+  /Users/maximilianlang/.nvm/versions/node/v10.14.1/bin/node /usr/local/Cellar/yarn/1.13.0/libexec/bin/yarn.js run start:debug
 
 PATH: 
-  C:\Python39\Scripts\;C:\Python39\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Yarn\bin\;C:\Program Files (x86)\Boxcryptor\bin\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Users\maxis\AppData\Local\Microsoft\WindowsApps;C:\Users\maxis\AppData\Roaming\npm;C:\Users\maxis\AppData\Local\Yarn\bin;C:\Users\maxis\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\maxis\.dotnet\tools
+  /Users/maximilianlang/.nvm/versions/node/v10.14.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 
 Yarn version: 
-  1.22.0
+  1.13.0
 
 Node version: 
-  12.16.2
+  10.14.1
 
 Platform: 
-  win32 x64
+  darwin x64
 
 Trace: 
-  SyntaxError: C:\Users\maxis\Projects\bachelorarbeit\api\package.json: Unexpected token / in JSON at position 111
+  SyntaxError: /Users/maximilianlang/Documents/Projects/BachelorArbeit/ba_api/package.json: Unexpected token } in JSON at position 399
       at JSON.parse (<anonymous>)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at /usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:1625:59
       at Generator.next (<anonymous>)
-      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+      at step (/usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.13.0/libexec/lib/cli.js:315:13
 
 npm manifest: 
   {
-    "watch": ["src"],
-    "ext": "ts",
-    "ignore": ["src/**/*.spec.ts"],
-    "exec": "ts-node ./src/index.ts"      // or "npx ts-node src/index.ts"
+    "name": "api",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "license": "MIT",
+    "scripts": {
+      "build": "tsc",
+      "dist": "sh ./scripts/dist.sh",
+      "start": "node dist/index.js",
+      "start:debug": "node --inspect=5858 -r ts-node/register ./src/index.ts",
+      "start:prod": "NODE_ENV=production node --inspect=5858 -r ts-node/register ./src/index.ts",
+      "start:watch": "nodemon",
+    },
+    "devDependencies": {
+      "@types/cors": "^2.8.7",
+      "@types/express": "^4.17.7",
+      "@types/mongodb": "^3.5.25",
+      "@types/node": "^14.0.27",
+      "nodemon": "^2.0.4",
+      "ts-node": "^8.10.2",
+      "typescript": "^3.9.7"
+    },
+    "dependencies": {
+      "body-parser": "^1.19.0",
+      "cors": "^2.8.5",
+      "custom-env": "^2.0.1",
+      "dotenv": "^8.2.0",
+      "express": "^4.17.1",
+      "fs": "^0.0.1-security",
+      "global": "^4.4.0",
+      "inversify": "^5.0.1",
+      "inversify-express-utils": "^6.3.2",
+      "mongodb": "^3.6.0",
+      "reflect-metadata": "^0.1.13"
+    }
   }
 
 yarn manifest: 
@@ -430,6 +460,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/crypto-random-string/-/crypto-random-string-2.0.0.tgz#ef2a7a966ec11083388369baa02ebead229b30d5"
     integrity sha512-v1plID3y9r/lPhviJ1wrXpLeyUIGAZ2SHNYTEapm7/8A9nLPoyvVp3RK/EPFqn5kEznyWgYZNsRtYYIWbuG8KA==
   
+  custom-env@^2.0.1:
+    version "2.0.1"
+    resolved "https://registry.yarnpkg.com/custom-env/-/custom-env-2.0.1.tgz#30afaf5200f43aa86731f81576387f5d2af2c51b"
+    integrity sha512-gVv19DBDuTQ8MM/WPlf8025Aa46Aqmfrr/kDxyDfXWe5t7C3+OgBsuhrsXTKQ4hGo+z1OuuaOQnhgTWIpvrz+w==
+    dependencies:
+      dotenv "*"
+      dotenv-expand "^5.0.0"
+  
   debug@2.6.9, debug@^2.2.0:
     version "2.6.9"
     resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
@@ -497,6 +535,16 @@ Lockfile:
     integrity sha512-uEUyaDKoSQ1M4Oq8l45hSE26SnTxL6snNnqvK/VWx5wJhmff5z0FUVJDKDanor/6w3kzE3i7XZOk+7wC0EXr1A==
     dependencies:
       is-obj "^2.0.0"
+  
+  dotenv-expand@^5.0.0:
+    version "5.1.0"
+    resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
+    integrity sha512-YXQl1DSa4/PQyRfgrv6aoNjhasp/p4qs9FjJ4q4cQk+8m4r6k4ZSiEyytKG8f8W9gi8WsQtIObNmKd+tMzNTmA==
+  
+  dotenv@*, dotenv@^8.2.0:
+    version "8.2.0"
+    resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+    integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   
   duplexer3@^0.1.4:
     version "0.1.4"
@@ -659,6 +707,11 @@ Lockfile:
     version "0.5.2"
     resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
     integrity sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=
+  
+  fs@^0.0.1-security:
+    version "0.0.1-security"
+    resolved "https://registry.yarnpkg.com/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
+    integrity sha1-invTcYa23d84E/I4WLV+yq9eQdQ=
   
   fsevents@~2.1.2:
     version "2.1.3"

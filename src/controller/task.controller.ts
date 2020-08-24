@@ -1,4 +1,13 @@
-import { controller, httpGet, httpPost, httpPut, request, requestParam, response } from 'inversify-express-utils';
+import {
+    controller,
+    httpDelete,
+    httpGet,
+    httpPost,
+    httpPut,
+    request,
+    requestParam,
+    response
+} from 'inversify-express-utils';
 import { inject, } from 'inversify';
 import TYPES from '../constants/types';
 import { TaskService } from '../services/task.service';
@@ -17,7 +26,7 @@ export class TaskController {
     }
 
     @httpPost('/')
-    public async addTask(@request() request: Request, @response() res: Response): Promise<Task> {
+    public async addTask(@request() request: Request, @response() res: Response): Promise<void> {
         let task: Task = null;
 
         try {
@@ -25,8 +34,7 @@ export class TaskController {
         } catch (e) {
             res.status(400).json({error: e.message});
         }
-
-        return task
+        res.status(200).json(task);
     }
 
     @httpPut('/:id')
@@ -36,5 +44,16 @@ export class TaskController {
         } catch (e) {
             res.status(400).json({error: e.message});
         }
+    }
+
+    @httpDelete('/:id')
+    public async deleteTask(@requestParam("id") id: string, @request() request: Request, @response() res: Response): Promise<void> {
+        try {
+            await this.taskService.deleteTask(id);
+        } catch (e) {
+            res.status(400).json({error: e.message});
+        }
+
+        res.status(204)
     }
 }

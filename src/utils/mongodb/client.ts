@@ -27,6 +27,12 @@ export class MongoDBClient {
         return result.ops[0];
     }
 
+    public async delte<T>(collection: string, objectId: string): Promise<void> {
+        const connection = await this.getConnection();
+        const result = await connection.collection(collection).deleteOne({_id: new ObjectID(objectId)});
+
+    }
+
     public async update<T>(collection: string, objectId: string, model: Partial<T>): Promise<void> {
         const connection = await this.getConnection();
         const result = await connection.collection(collection).updateOne(
