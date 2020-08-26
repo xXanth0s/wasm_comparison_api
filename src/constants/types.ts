@@ -4,6 +4,7 @@ const TYPES = {
     TaskService: Symbol.for('TaskService'),
     PersonService: Symbol.for('PersonService'),
     MatrixService: Symbol.for('MatrixService'),
+    SortableDataService: Symbol.for('SortableDataService'),
     VideoService: Symbol.for('VideoService'),
 };
 

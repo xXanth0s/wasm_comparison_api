@@ -11,7 +11,9 @@ export class PersonController {
     }
 
     @httpGet('/')
-    public get(): Promise<Person[]> {
-        return this.personService.getAllPersons();
+    public async get(): Promise<Person[]> {
+        const result = await this.personService.getAllPersons();
+        return result
+
     }
 }
