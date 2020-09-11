@@ -11,6 +11,13 @@ export class MongoDBClient {
         return connection.collection(collection).find<T>(filter).toArray();
     }
 
+    public async aggregate<T>(collection: string, filter: any): Promise<T[]> {
+        const connection = await this.getConnection();
+        return connection.collection(collection).aggregate<T>(filter).toArray();
+    }
+
+
+
     public async findFirst<T>(collection: string, filter: Object): Promise<T> {
         const connection = await this.getConnection();
         return connection.collection(collection).findOne<T>(filter);
@@ -30,6 +37,12 @@ export class MongoDBClient {
     public async delte<T>(collection: string, objectId: string): Promise<void> {
         const connection = await this.getConnection();
         const result = await connection.collection(collection).deleteOne({_id: new ObjectID(objectId)});
+
+    }
+
+    public async delteForFilter<T>(collection: string, filter: Object): Promise<void> {
+        const connection = await this.getConnection();
+        const result = await connection.collection(collection).deleteMany(filter);
 
     }
 

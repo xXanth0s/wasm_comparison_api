@@ -1,4 +1,4 @@
-import {controller, httpGet} from 'inversify-express-utils';
+import { controller, httpGet, requestParam } from 'inversify-express-utils';
 import {inject,} from 'inversify';
 import TYPES from '../constants/types';
 import {MatrixService} from '../services/matrix.service';
@@ -12,9 +12,17 @@ export class SortableController {
     constructor(@inject(TYPES.SortableDataService) private readonly sortableDataService: SortableDataService) {
     }
 
-    @httpGet('/')
-    public async get(): Promise<SortableData[]> {
+    @httpGet('/:count')
+    public async get(@requestParam("count") count: number = 100000): Promise<string[]> {
         const data = await this.sortableDataService.getAllSortableData();
+        data.length = count
+        return data;
+    }
+
+    @httpGet('/numbers/:count')
+    public async getNumbers(@requestParam("count") count: number = 100000): Promise<number[]> {
+        const data = await this.sortableDataService.getAllSortableNumbers();
+        data.length = count
         return data;
     }
 }

@@ -9,11 +9,13 @@ import '../controller/video.controller';
 import '../controller/matrix.controller';
 import '../controller/person.controller';
 import '../controller/sortable.controller';
+import '../controller/result.controller';
 import { TaskService } from '../services/task.service';
 import { VideoService } from '../services/video.service';
 import {PersonService} from '../services/person.service';
 import {MatrixService} from '../services/matrix.service';
 import { SortableDataService } from '../services/sortable-data.service';
+import { ResultService } from '../services/result.service';
 
 
 export function initContainer(): Container {
@@ -24,6 +26,7 @@ export function initContainer(): Container {
     container.bind<VideoService>(TYPES.VideoService).to(VideoService).inSingletonScope();
     container.bind<PersonService>(TYPES.PersonService).to(PersonService).inSingletonScope();
     container.bind<MatrixService>(TYPES.MatrixService).to(MatrixService).inSingletonScope();
+    container.bind<ResultService>(TYPES.ResultService).to(ResultService).inSingletonScope();
     container.bind<SortableDataService>(TYPES.SortableDataService).to(SortableDataService).inSingletonScope();
 
     return container;

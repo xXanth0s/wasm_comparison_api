@@ -55,9 +55,12 @@ export class VideoController {
                     return res.sendStatus(400);
                 }
             })
-
+        let contentType = 'image/png';
+        if(video.thumbnailFileName.includes('.svg')) {
+            contentType = 'image/svg+xml';
+        }
         const head = {
-            'Content-Type': 'image/png',
+            'Content-Type': contentType,
         };
         res.writeHead(200, head);
         ps.pipe(res);

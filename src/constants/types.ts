@@ -6,6 +6,7 @@ const TYPES = {
     MatrixService: Symbol.for('MatrixService'),
     SortableDataService: Symbol.for('SortableDataService'),
     VideoService: Symbol.for('VideoService'),
+    ResultService: Symbol.for('ResultService'),
 };
 
 export default TYPES;
