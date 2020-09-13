@@ -17,14 +17,12 @@ export class TaskService {
     }
 
     public async newTask(task: TaskToSave): Promise<Task> {
-        console.log('adding task', task)
         const finalTask: Task = {
             ...task,
             completed: false,
             dateAdded: new Date(),
             dateUpdated: new Date(),
         }
-        console.log('final Task', finalTask)
 
         return this.mongoClient.insert<Task>(this.collectionName, finalTask);
     }

@@ -16,7 +16,6 @@ export class ResultService {
     }
 
     public async newResult(result: Result): Promise<Result> {
-        console.log('adding result', result)
         const finalResult: Result = {
             ...result,
             dateAdded: new Date(),
@@ -26,52 +25,16 @@ export class ResultService {
     }
 
     public async deleteSepcific(filter: Object): Promise<void> {
-        console.log('deleting for filter', filter)
-
         return this.mongoClient.delteForFilter<Result>(this.collectionName, filter);
     }
 
     public async getAvarage(): Promise<any> {
-        const agg = [
-            {
-                '$group': {
-                    '_id': {
-                        'framework': '$framework',
-                        'browser': '$browser',
-                        'sortType': '$sortType',
-                        'count': '$count'
-                    },
-                    'browser': {
-                        '$first': '$browser'
-                    },
-                    'framework': {
-                        '$first': '$framework'
-                    },
-                    'sortType': {
-                        '$first': '$sortType'
-                    },
-                    'count': {
-                        '$first': '$count'
-                    },
-                    'avarage time': {
-                        '$avg': '$time'
-                    }
-                }
-            }, {
-                '$sort': {
-                    'sortType': 1,
-                    'browser': 1,
-                    framework: 1,
-                    'count': -1,
-                }
-            }
-        ];
+        const aggregation = [{}];
 
-        const result= await this.mongoClient.aggregate<any>(this.collectionName, agg);
+        const result= await this.mongoClient.aggregate<any>(this.collectionName, aggregation);
         return result.map(data => {
 
             delete data._id;
-            console.log(data)
             return data
         })
     }

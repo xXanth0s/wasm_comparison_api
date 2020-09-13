@@ -1,7 +1,7 @@
 import {Db, MongoClient, MongoClientOptions} from 'mongodb';
-console.log(process.env['MongoConnectionString'])
+
 const connStr = process.env['MongoConnectionString'];
-const dbName = 'to_do_app';
+const dbName = process.env['DatabaseName'];
 
 export class MongoDBConnection {
   private static isConnected: boolean = false;

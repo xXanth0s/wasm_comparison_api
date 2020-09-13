@@ -11,9 +11,9 @@ export class MongoDBClient {
         return connection.collection(collection).find<T>(filter).toArray();
     }
 
-    public async aggregate<T>(collection: string, filter: any): Promise<T[]> {
+    public async aggregate<T>(collection: string, aggregation: any): Promise<T[]> {
         const connection = await this.getConnection();
-        return connection.collection(collection).aggregate<T>(filter).toArray();
+        return connection.collection(collection).aggregate<T>(aggregation).toArray();
     }
 
 

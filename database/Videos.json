@@ -1,0 +1,34 @@
+[{
+  "_id": {
+    "$oid": "5f393cf3a605606170761bfc"
+  },
+  "title": "Capri Sonne Böhmermann",
+  "description": "Ausschnitt aus der Parodie zu Effi Briest von Jan Böhmermann",
+  "fileName": "capri_sonne.mp4",
+  "dateAdded": {
+    "$date": "2020-08-16T14:04:35.758Z"
+  },
+  "thumbnailFileName": "effi_thumbnail.jpg"
+},{
+  "_id": {
+    "$oid": "5f396e3e3f5ca333c86f2199"
+  },
+  "title": "Bowling",
+  "description": "ABB Robotter der für Bowling umfunktioniert wurde",
+  "fileName": "bowling.mp4",
+  "thumbnailFileName": "roboter_thumbnail.png",
+  "dateAdded": {
+    "$date": "2020-08-16T17:34:54.903Z"
+  }
+},{
+  "_id": {
+    "$oid": "5f3970cad0675a26dc4d3db1"
+  },
+  "title": "Olaf",
+  "description": "Szene aus der Wikingerfolge von Spongebob Schwammkopf",
+  "fileName": "spongebob.mp4",
+  "thumbnailFileName": "spongebob_thumbnail.svg",
+  "dateAdded": {
+    "$date": "2020-08-16T17:45:46.662Z"
+  }
+}]

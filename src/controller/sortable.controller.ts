@@ -1,9 +1,6 @@
 import { controller, httpGet, requestParam } from 'inversify-express-utils';
-import {inject,} from 'inversify';
+import { inject, } from 'inversify';
 import TYPES from '../constants/types';
-import {MatrixService} from '../services/matrix.service';
-import {Matrix} from '../models/matrix';
-import { SortableData } from '../models/sortable-data.model';
 import { SortableDataService } from '../services/sortable-data.service';
 
 @controller('/sortable')

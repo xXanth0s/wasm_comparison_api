@@ -40,7 +40,6 @@ export class VideoController {
     @httpGet('/thumbnail/:id')
     public async getThumbnail(@requestParam("id") id: string, @request() request: Request, @response() res: Response): Promise<void> {
         const video = await this.videoService.getVideo(id);
-        console.log('thumbnail requested', video)
 
         const fullPath = `assets/images/${video.thumbnailFileName}`;
         const file = fs.createReadStream(fullPath)
@@ -69,7 +68,6 @@ export class VideoController {
     @httpGet('/data/:id')
     public async getVideoData(@requestParam("id") id: string, @request() request: Request, @response() res: Response): Promise<void> {
         const video = await this.videoService.getVideo(id);
-        console.log('video requested')
         const fullPath = `assets/videos/${video.fileName}`;
         const stat = fs.statSync(fullPath);
         const fileSize = stat.size;
