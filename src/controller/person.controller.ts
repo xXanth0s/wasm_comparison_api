@@ -13,7 +13,7 @@ export class PersonController {
     @httpGet('/')
     public async get(): Promise<Person[]> {
         const result = await this.personService.getAllPersons();
-        result.length = 1000;
+        result.length = 1000
         return result
 
     }
